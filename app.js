@@ -34,7 +34,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // mongoose connection
-mongoose.connect("mongodb://localhost:27017/userDB", {
+
+const mongoUser = process.env.MONGO_USER
+const mongoPassword = process.env.MONGO_PASSWORD
+
+mongoose.connect(`mongodb+srv://${mongoUser}:${mongoPassword}@firstcluster.ohomc.mongodb.net/userDB`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
